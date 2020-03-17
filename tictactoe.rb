@@ -24,13 +24,10 @@ class TicTacToe
   def get_input 
     puts "Where do you wanna mark?"
     
-    begin
-      input = gets.chomp.to_i
-    rescue input.grep(/a-zA-z/)
-      puts "Wrong input!"
-      get_input
-    
-    else
+    input = gets.chomp.to_i
+      
+    if ((input === Integer) && (input > 0 && input < 10) )    
+      
       if  !@toggle
         unless @board[input-1] == 'X' || @board[input-1] == 'O'
           @board[input-1] = 'X' 
@@ -42,6 +39,9 @@ class TicTacToe
           @toggle = false
         end
       end 
+    else 
+      puts "wrong input"
+      get_input
     end
      
   end
